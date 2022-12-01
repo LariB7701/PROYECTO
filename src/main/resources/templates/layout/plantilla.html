@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:fragment="head">
+        <title>Inicio</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <header th:fragment="header" class="header">
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0  sticky-top">
+                <div class="container-fluid">
+                    <a th:href="@{/index}" class="navbar-brand" style="padding-top: 10px; padding-bottom: 10px">
+                        <img src="img/logo.png" alt="Logo" style="width:80px;" class="rounded-pill"/> 
+
+                    </a>
+
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                        <ul class="navbar-nav ml-auto" sec:authorize="isAuthenticated()">
+                            <li class="nav-item mr-3 " style="padding-left:  1400px">
+                                <a th:href="@{/cliente/registrarse}" class="nav-link">
+                                    <i class="fas fa-user"></i>
+                                    <span th:text="#{plantilla.resgistrarse}"></span>
+                                    
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <form method="POST" th:action="@{/logout}">
+                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link">
+                                        <i class="fas fa-user-times"></i> [[#{plantilla.logout}]]
+                                    </a>
+                                </form>
+                            </li>
+
+
+
+
+                        </ul>
+                    </div>                    
+                </div>|
+            </nav>
+            <section id="main-header" class="py-2  bg-info ">
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-md-8 ">
+                            <div class="navbar navbar-expand-sm navbar-dark ">
+
+                                <ul class="navbar-nav" sec:authorize="hasRole('ROLE_ADMIN')"> 
+                                    <li class="nav-item mr-3">
+                                        <a href="#" class="nav-link navbar-light"
+                                            th:text="#{plantilla.inicio}">Inicio
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item mr-3">
+                                        <a class="nav-link" th:href="@{/cliente/tours}"
+                                           th:text="#{plantilla.destinos}">Destinos
+                                        </a>
+                                    </li>
+
+
+                                    <li class="nav-item ">
+                                        <a href="#" class="nav-link"
+                                           th:text="#{plantilla.contacto}">Contactenos
+                                        </a>
+                                    </li>
+                                </ul>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header>
+
+        <footer th:fragment="footer" >
+            <div class="container">
+                <div class="col">
+                    <p class="lead text-center">
+                        &COPY [[#{plantilla.derechos}]]
+                        <a th:href="@{/(lang=es)}">ES</a> | 
+                        <a th:href="@{/(lang=en)}">EN</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>

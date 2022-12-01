@@ -1,133 +1,91 @@
 <!DOCTYPE html>
 
-<html>
-    <head>
-        <title>Costa rica Tours</title>
-        <meta charset="UTF-8">
-        <style type="text/css">
-            
-            * { 
-                
-             padding : 0px;
-             margin: 0px;
-             
-            }
-            
-            #header{
-                margin: auto;
-                width: 500px;
-                font-family: Arial, Helvetica, sans-serif;
-            }
-            
-            ul,ol {
-                list-style: none; 
-            }
-            
-            .nav li a{
-                background-color:#000 ;
-                color: #fff;
-                text-decoration: none ;
-                padding: 10px 15px;
-                display: block;
-            }
-            
-            .nav li a:hover  {
-                background-color: #434343;
-            }
-            
-            .nav > li{
-                float: left;
-            }
-            
-            .nav li ul {
-                display: none ;
-                position: absolute;
-                min-width: 140px;
-            }
-            
-            .nav li:hover > ul {
-                display: block;
-            }
-            
-            .nav li ul li{
-                position: relative;
-            }
-            
-            .nav li ul li ul{
-                
-                right: -140px;
-                top: 0px;
-                
-            }
-            
-             .footer{
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-                background-color: black;
-                text-align: center;
-                color: white;
-                height: 20px;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%
-
-            }
-            
-        </style>
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
     </head>
+
     <body>
 
-        <header>
-            <h1 style="text-align: center; background-color: #00cc66; font-size: 50px; font-style: italic" >
-                Costa Rica Tours
-            </h1>
-            <h2 style= " text-align: right;position: relative;right: 50px ; text-transform: capitalize;">
-                
-               <a href="index.html " style=" text-decoration: none;color: black"> Inicie Sesion</a>  
-               <a href="index.html" style=" text-decoration: none;color: black">Registrarse</a> 
-                
-            </h2>
-        </header>
+        <header th:replace="layout/plantilla :: header"/>
 
-        <br>
-        <br>
 
-        <div id ="header">
+        <div id ="header"  >
 
-            <ul class="nav"> <!-- Inicio de la lista -->
 
-                <li> <a href=""> Inicio </a>  </li>
-                <li> <a href=""> Tours </a> 
-                    <ul>
-                        <li> <a href=""> Playa </a>  </li>
-                        <li> <a href=""> Montaña </a>  </li>
-                    </ul>
-                </li>
-                <li> <a href=""> Atracciones </a> 
-                    <ul>
-                        <li> <a href=""> Individuales </a>  </li>
-                        <li> <a href=""> Grupales </a>  </li>
-                        <li> <a href=""> Hospedajes </a> 
-                            <ul>
-                                <li> <a href=""> Costa </a>  </li>
-                                <li> <a href=""> Montaña </a>  </li>
-                                <li> <a href=""> Ciudad </a>  </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li> <a href=""> Contactenos </a>  </li>                
 
-            </ul>
+            <div class="container-fluid text-center " style="padding-top: 50px; padding-bottom: 100px; width: 80%">
 
-        </div> 
 
-        <br>
-        <br>
-        <footer class="footer">
-            
-            © derechso reservados 2022;
-            
-        </footer>
+
+                <div class="row" >
+
+
+                    <div class="col-sm card" style="margin-left: 5px; margin-right: 5px" >
+
+                        <img src="img/tour1.png" alt="Logo" style="width: 100%"/>
+                        <div >
+                            <h4 class="card-title">Catarata de Río Celeste</h4>
+                            <p class="card-text" style="font-size:18px">La reacción química de una serie de minerales volcánicos que se encuentran en el fondo de este río consiguen darle al agua 
+                                un espectacular color turquesa que deja para atrás la tonalidad que ofrece la playa más paradisiaca del mundo.</p>
+                            <a href="#" class="btn btn-dark">Más información</a>
+                        </div>
+                    </div> 
+
+
+
+                    <div class="col-sm card" style="margin-left: 5px; margin-right: 5px">
+
+                        <img src="img/tour2.png" alt="Logo" style="width: 100%"/>
+                        <div >
+                            <h4 class="card-title">Isla Tortuga</h4>
+                            <p class="card-text" style="font-size:18px">Desde la distancia en el mar adentro, su forma se asemeja a quelonios que significa tortuga en la antigua lengua huetar, perteneciente a 
+                                los indígenas que poblaron parte del Pacífico Central, de allí proviene su nombre.</p>
+                            <a href="#" class="btn btn-dark">Más información</a>
+                        </div>
+                    </div> 
+
+
+
+
+                    <div class="col-sm card" style="margin-left: 5px; margin-right: 5px">
+
+                        <img src="img/tour3.png" alt="Logo" style="width: 100%"/>
+                        <div >
+                            <h4 class="card-title">Monteverde Extremo Park</h4>
+                            <p class="card-text" style="font-size:18px">Cuando se trata de adrenalina, altura, vértigo y emociones extremas sobran los valientes que quieren apuntarse,
+                                por otro lado están los menos convencidos que van por probar algo distinto y nunca faltan los valientes y 
+                                van casi obligados..</p>
+                            <a href="#" class="btn btn-dark">Más información</a>
+                        </div>
+                    </div> 
+
+
+                    <div class="col-sm card" style="margin-left: 5px; margin-right: 5px">
+
+                        <img src="img/tour4.png" alt="Logo" style="width: 100%"/>
+                        <div >
+                            <h4 class="card-title">Volcán Arenal</h4>
+                            <p class="card-text" style="font-size:18px">La imponencia del volcán Arenal es innegable y esto es en lo primero que pensamos al visitar La Fortuna de San Carlos, donde
+                                se ubica esta maravilla natural.</p>
+                            <a href="#" class="btn btn-dark">Más información</a>
+                        </div>
+                    </div> 
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <footer th:replace="layout/plantilla :: footer"/>
+
+
+
+
     </body>
 </html>
