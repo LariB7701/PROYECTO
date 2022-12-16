@@ -16,7 +16,7 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping("/cliente/registrarse")
+    @GetMapping("/cliente/agregar")
     public String inicio(Model model) {
 
         var clientes = clienteService.getClientes();
@@ -26,7 +26,7 @@ public class ClienteController {
         model.addAttribute("totalClientes",clientes.size());
         
         model.addAttribute("clientes",clientes);
-        return "/cliente/registrarse";
+        return "/cliente/agregar";
         
     }
 
@@ -34,7 +34,7 @@ public class ClienteController {
     @GetMapping("/cliente/nuevo")
     public String clienteNuevo(Cliente cliente) {
 
-        return "/cliente/registrarse";
+        return "/cliente/modificar";
 
     }
 
@@ -42,7 +42,7 @@ public class ClienteController {
     @GetMapping("/cliente/busqueda")
     public String clienteBusqueda(Cliente cliente) {
 
-        return "/cliente/tours";
+        return "/cliente/busqueda";
 
     }
     
@@ -55,7 +55,7 @@ public class ClienteController {
 
         clienteService.save(cliente);
         //Esto es para que se vaya de nuevo al index
-        return "redirect:/cliente/registrarse";
+        return "redirect:/cliente/modificar";
 
     }
 
@@ -74,7 +74,7 @@ public class ClienteController {
     public String clienteElimina(Cliente cliente) {
 
         clienteService.delete(cliente);
-        return "redirect:/cliente/tours";
+        return "redirect:/cliente/agregar";
 
     }
 

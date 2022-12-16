@@ -1,27 +1,120 @@
 <html 
-    xmlns:th="http://www.thymeleaf.org"
+      xmlns:th="http://www.thymeleaf.org"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
     <head th:replace="layout/plantilla :: head">
-        <title>Inicio</title>
+        <title>ToursCR</title>
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <section th:fragment="botonesAgregar" >
-           
+
+        <header th:replace="layout/plantilla :: header"/>
+        <video
+            src="video/CostaRica.mp4" autoplay="" loop="" muted="">
+        </video>
+
+
+
+
+
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">   
+                        <button 
+                            type="button" 
+                            class="btn btn-light btn-block" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#agregarCliente">
+                            <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
         </section>
 
 
-        <section th:fragment="listadoClientes" >
-            
+        <section th:fragment="listadoUsuarios" id="clientes">
+            <div class="container text-center" style="margin-top: 5px;
+                 background-color: rgba(255, 255, 255, 0.1);
+                 border: 1px solid white;
+                 border-radius: 2%;
+                 backdrop-filter: blur(20px);
+                 width: 50%;
+                 padding-top: 2%;
+                 padding-bottom: 2%;
+                 color: white">
+
+                <div class="row ">
+
+
+                    <div class="card-header">
+                        <h4 style="color:black">[[#{cliente.titulo}]]</h4>
+                    </div>
+                    <div th:if="${clientes != null and !clientes.empty}">
+                        <table class="table table-dark table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th >#</th>
+                                    <th th:text="#{cliente.nombre}">Nombre</th>
+                                    <th></th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="cliente, contador : ${clientes}">
+                                    <td>[[${contador.count}]]</td>
+                                    <td>[[${cliente.nombre} + ' ' + ${cliente.apellido}]]</td>
+
+
+
+                                    <td>
+                                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/cliente/actualiza/}+${cliente.idCliente}"
+                                           class="btn btn-light">
+                                            <i class="fas fa-pen"></i> [[#{accion.actualizar}]]
+                                        </a>
+                                    </td>
+
+                                    <td>
+                                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/cliente/eliminar/}+${cliente.idCliente}"
+                                           class="btn btn-light">
+                                            <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center p-2" th:if="${clientes == null or clientes.empty}">
+                        <span th:text="#{cliente.no_mostrar}">Lista vacía</span>
+                    </div>
+
+                </div>
+
+                <div class="card text-white mb-3 ">
+                    <div class="card-body" style="color:black">
+                        <h3 th:text="#{cliente.totalClientes}">Total Clientes</h3>
+                        <h4 class="display-4">
+                            <i class="fas fa-users"></i> [[${totalClientes}]]
+                        </h4>
+                    </div>
+                </div>
+
+            </div>
+
         </section>
 
 
-        <section th:fragment="agregarCliente">
-          
-                <div class="modal-dialog modal-lg">
+       <section th:fragment="agregarCliente">
+            <div id="agregarCliente" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
-                       
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Cliente</h5>
+                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
                         <form th:action="@{/cliente/guardar}" th:object="${cliente}"
                               method="POST" class="was-validated">
                             <div class="modal-body">
@@ -41,25 +134,83 @@
                                     <label for="telefono" th:text="#{cliente.telefono}">Teléfono</label>
                                     <input type="tel" class="form-control" name="telefono"/>
                                 </div>
-                                
-                               
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                                <button class="btn btn-ligth" type="submit" th:text="#{accion.guardar}">Guardar</button>
                             </div>
                         </form>
                     </div>
                 </div>
-            
+            </div>
         </section>
 
         <section th:fragment="editarCliente">            
-            
+            <form method="POST"
+                  th:action="@{/cliente/guardar}"
+                  th:object="${cliente}"
+                  class="was-validated">
+                <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+                <section th:replace="cliente/fragmentosCliente :: botonesEditar"/> 
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.actualizar}]]</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="nombre" th:text="#{cliente.nombre}">Nombre: </label>
+                                            <input type="text" class="form-control" name="nombre" th:field="*{nombre}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="apellido" th:text="#{cliente.apellidos}">Apellidos: </label>
+                                            <input type="text"  class="form-control" name="apellido" th:field="*{apellido}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="correo" th:text="#{cliente.correo}">Correo: </label>
+                                            <input type="email"  class="form-control" name="correo" th:field="*{correo}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="telefono" th:text="#{cliente.telefono}">Teléfono: </label>
+                                            <input type="tel"  class="form-control" name="telefono" th:field="*{telefono}"/>
+                                        </div>               
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </section>
 
 
         <section th:fragment="botonesEditar">
-          
+
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a th:href="@{/cliente/agregar}" class="btn btn-ligth btn-block">
+                                <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <a th:href="@{/cliente/eliminar/}+${cliente.idCliente}"
+                               class="btn btn-danger btn-block">
+                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
     </body>

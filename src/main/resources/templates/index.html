@@ -1,85 +1,173 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org"
+<html  xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
     <head th:replace="layout/plantilla :: head">
-        <title>Inicio</title>
+        
+        <title>ToursCR</title>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
 
     <body>
+
+
 
         <header th:replace="layout/plantilla :: header"/>
 
 
         <div id ="header"  >
+            
+           
+
+                <video
+                src="video/CostaRicaUK.mp4" autoplay="" loop="" muted="">
+                </video>
+
+                <div class="container-fluid text-center " style="margin-top: 160px; margin-bottom: 180px; width: 50%;">
+
+                    <div id="carruselPrincipal" class="carousel slide" data-bs-ride="carousel">
+
+                        <!-- Botones de control -->
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carruselPrincipal" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#carruselPrincipal" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#carruselPrincipal" data-bs-slide-to="2"></button>
+                            <button type="button" data-bs-target="#carruselPrincipal" data-bs-slide-to="3"></button>
+                            <button type="button" data-bs-target="#carruselPrincipal" data-bs-slide-to="4"></button>
+                        </div>
+
+                        <div class="carousel-inner" >
+                            <div class="carousel-item active" >
+                                <img class="d-block w-100" src="img/1.jpg" />
+                            </div>
+                            <div class="carousel-item" style="width: 100%">
+                                <img class="d-block w-100" src="img/2.jpg"/>
+                            </div>
+                            <div class="carousel-item" style="width: 100%">
+                                <img class="d-block w-100" src="img/3.jpg" />
+                            </div>
+                            <div class="carousel-item" style="width: 100%">
+                                <img class="d-block w-100" src="img/4.jpg" />
+                            </div>
+                            <div class="carousel-item" style="width: 100%">
+                                <img class="d-block w-100" src="img/Pacuare.png" />
+                            </div>
+                        </div>
+                        <!-- BOTONES -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carruselPrincipal" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carruselPrincipal" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+
+
+                </div>
 
 
 
-            <div class="container-fluid text-center " style="padding-top: 50px; padding-bottom: 100px; width: 80%">
+
+                <div class="row"  style="padding-bottom: 100px; margin-left: 10px; margin-right: 10px">
 
 
 
-                <div class="row" >
+                    <div class="col-sm card" style="margin-left: 8px; 
+                                                    margin-right: 8px; 
+                                                    background-color: rgba(255, 255, 255, 0.1);
+                                                    border: 1px solid white;
+                                                    border-radius: 2%;
+                                                    backdrop-filter: blur(100px);
+                                                    color: white" >
 
-
-                    <div class="col-sm card" style="margin-left: 5px; margin-right: 5px" >
-
-                        <img src="img/tour1.png" alt="Logo" style="width: 100%"/>
-                        <div >
+                        <img  src="img/tour1.png" alt="Logo" style="width: 100%; "/>
+                        
+                        
+                        <div class="text-center" >
                             <h4 class="card-title">Catarata de Río Celeste</h4>
                             <p class="card-text" style="font-size:18px">La reacción química de una serie de minerales volcánicos que se encuentran en el fondo de este río consiguen darle al agua 
                                 un espectacular color turquesa que deja para atrás la tonalidad que ofrece la playa más paradisiaca del mundo.</p>
-                            <a href="#" class="btn btn-dark">Más información</a>
+                            <a th:href="@{/tours/destinos}" class="btn btn-light" >Más información</a>
                         </div>
+                        
+                        
                     </div> 
 
 
 
-                    <div class="col-sm card" style="margin-left: 5px; margin-right: 5px">
+
+                    <div class="col-sm card" style="margin-left: 8px; 
+                                                    margin-right: 8px; 
+                                                    background-color: rgba(255, 255, 255, 0.1);
+                                                    border: 1px solid white;
+                                                    border-radius: 2%;
+                                                    backdrop-filter: blur(100px);
+                                                    color: white" >
 
                         <img src="img/tour2.png" alt="Logo" style="width: 100%"/>
-                        <div >
+                        
+                        <div class="text-center">
                             <h4 class="card-title">Isla Tortuga</h4>
                             <p class="card-text" style="font-size:18px">Desde la distancia en el mar adentro, su forma se asemeja a quelonios que significa tortuga en la antigua lengua huetar, perteneciente a 
                                 los indígenas que poblaron parte del Pacífico Central, de allí proviene su nombre.</p>
-                            <a href="#" class="btn btn-dark">Más información</a>
+                            <a th:href="@{/tours/destinos}" class="btn btn-light">Más información</a>
                         </div>
                     </div> 
 
 
 
 
-                    <div class="col-sm card" style="margin-left: 5px; margin-right: 5px">
+
+                    <div class="col-sm card" style="margin-left: 8px; 
+                                                    margin-right: 8px; 
+                                                    background-color: rgba(255, 255, 255, 0.1);
+                                                    border: 1px solid white;
+                                                    border-radius: 2%;
+                                                    backdrop-filter: blur(100px);
+                                                    color: white">
 
                         <img src="img/tour3.png" alt="Logo" style="width: 100%"/>
-                        <div >
+                        
+                        <div class="text-center">
                             <h4 class="card-title">Monteverde Extremo Park</h4>
                             <p class="card-text" style="font-size:18px">Cuando se trata de adrenalina, altura, vértigo y emociones extremas sobran los valientes que quieren apuntarse,
                                 por otro lado están los menos convencidos que van por probar algo distinto y nunca faltan los valientes y 
                                 van casi obligados..</p>
-                            <a href="#" class="btn btn-dark">Más información</a>
+                            <a th:href="@{/tours/destinos}" class="btn btn-light">Más información</a>
                         </div>
-                    </div> 
+                    </div>
 
-
-                    <div class="col-sm card" style="margin-left: 5px; margin-right: 5px">
+                    <div class="col-sm card" style="margin-left: 8px; 
+                                                    margin-right: 8px; 
+                                                    background-color: rgba(255, 255, 255, 0.1);
+                                                    border: 1px solid white;
+                                                    border-radius: 2%;
+                                                    backdrop-filter: blur(100px);
+                                                    color: white" >
 
                         <img src="img/tour4.png" alt="Logo" style="width: 100%"/>
-                        <div >
+                        
+                        <div class="text-center">
                             <h4 class="card-title">Volcán Arenal</h4>
                             <p class="card-text" style="font-size:18px">La imponencia del volcán Arenal es innegable y esto es en lo primero que pensamos al visitar La Fortuna de San Carlos, donde
                                 se ubica esta maravilla natural.</p>
-                            <a href="#" class="btn btn-dark">Más información</a>
+                            <a th:href="@{/tours/destinos}" class="btn btn-light">Más información</a>
                         </div>
                     </div> 
                 </div>
 
-            </div>
+
+            
+
+
 
         </div>
-
 
 
         <footer th:replace="layout/plantilla :: footer"/>

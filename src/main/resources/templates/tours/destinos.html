@@ -1,0 +1,144 @@
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace="layout/plantilla :: head">
+
+        <title>ToursCR</title>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+
+    <body>
+
+
+
+        <header th:replace="layout/plantilla :: header"/>
+
+
+
+        <div style="
+             display: flex;
+             width: 100%;
+             gap: 50px;
+             flex-wrap: wrap;
+             justify-content: center;
+             padding-bottom: 200px;
+             padding-top: 50px;
+             transform: translateZ(60px);
+             background-image: url('/img/tour1.png')
+             ">
+
+          
+            <div style="
+                 width: 310px;
+                 padding: 20px;
+                 box-shadow: 2px 2px 5px black;
+                 background-color: #99ff99;
+                 transform: translateZ(60px);
+                 ">
+                <div>
+                    <h1>Volcan Arenal</h1>
+                    <div>
+                        <p>Un viaje exclusivo al Volcan en un hotel todo incluido cerca a la playa con aguas cristalinas</p>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>Wifi</li>
+                            <li>Parqueo</li>
+                            <li>Todo Incluido</li>
+                            <li>Pase Aguas Termales</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="
+                 width: 310px;
+                 padding: 20px;
+                 box-shadow: 2px 2px 5px black;
+                 background-color: #99ff99;
+                 transform: translateZ(60px);
+                 ">
+                <div>
+                    <h1>Isla Tortuga</h1>
+                    <div>
+                        <p>Hotel de playa con vista al mar, zona de alto oleaje para personas que desean disfrutar del surfing y del sonido del mar</p>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>Wifi</li>
+                            <li>Parqueo</li>
+                            <li>Todo Incluido</li>
+                            <li>Tina</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="
+                 width: 310px;
+                 padding: 20px;
+                 box-shadow: 2px 2px 5px black;
+                 background-color: #99ff99;
+                 transform: translateZ(60px);
+                 ">
+                <div>
+                    <h1>MonteVerde Extreme Pack</h1>
+                    <div>
+                        <p>Un tour lleno de aventuras para tda la familia en el que se disfrutaran varias actividades al aire libre</p>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>Wifi</li>
+                            <li>Parqueo</li>
+                            <li>Desayuno</li>
+                            <li>Aviario</li>
+                            <li>Canopi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="
+                 width: 310px;
+                 padding: 20px;
+                 box-shadow: 2px 2px 5px black;
+                 background-color: #99ff99;
+                 transform: translateZ(60px);
+                 ">
+                <div>
+                    <h1>Rio Celeste</h1>
+                    <div>
+                        <p>Una aventura por uno de los lugares mas paradiciacos de costa rica, hermosas aguas cristalinas y senderos llenos de flora y fauna de asombrosa belleza</p>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>Wifi</li>
+                            <li>Parqueo</li>
+                            <li>Todo Incluido</li>
+                            <li>Tina</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+        
+        
+        
+        
+
+        <footer th:replace="layout/plantilla :: footer" 
+                style="position: relative;
+                bottom: 0px;
+                "></footer>
+
+    </body>
+</html>
+
